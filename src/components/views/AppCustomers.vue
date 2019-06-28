@@ -2,6 +2,21 @@
   <div>
     <h1>Customers</h1>
     <hr/>
+    <div>
+      <div>
+        <form @submit.prevent="addCustomer">
+          <div>
+            <label for="name">Name</label>
+            <input v-model="newCustomer.fullName" type="text" class="form-control" id="name" placeholder="Enter name">
+          </div>
+          <div>
+            <label for="email">Email address</label>
+            <input v-model="newCustomer.email" type="email" class="form-control" id="email" placeholder="Enter email">
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
     <table>
       <thead>
         <tr>
@@ -30,11 +45,17 @@
   export default {
     data() {
       return {
+        newCustomer: {},
         customers: customerService.list()
       }
     },
 
     methods: {
+      addCustomer() {
+        customerService.add(this.newCustomer)
+        this.newCustomer = {}
+      },
+
       removeCustomer(customer) {
         customerService.remove(customer);
       }
