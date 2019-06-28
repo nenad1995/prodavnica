@@ -3,7 +3,7 @@ const customers = [
     id: 1,
     fullName: 'Mario Speedwagon',
     email: 'example@example.com',
-    products: ['nesto']
+    products: []
   },
   {
     id: 2,
