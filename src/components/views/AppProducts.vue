@@ -3,6 +3,7 @@
     <h1>Products</h1>
     <hr/>
 
+    <input type="text" placeholder="Search" v-model="searchTerm">
     <table>
       <thead>
         <tr>
@@ -11,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="product in products" :key="product.id">
+        <tr v-for="product in filterProducts" :key="product.id">
           <td>{{ product.name }}</td>
           <td>{{ product.quantity }}</td>
         </tr>
@@ -26,7 +27,16 @@
   export default {
     data() {
       return {
-        products: productService.list()
+        products: productService.list(),
+        searchTerm: ''
+      }
+    },
+
+    computed: {
+      filterProducts () {
+        return this.products.filter(product => {
+          return product.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+        })
       }
     }
   }
