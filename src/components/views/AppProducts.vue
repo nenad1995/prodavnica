@@ -15,6 +15,10 @@
         <tr v-for="product in filterProducts" :key="product.id">
           <td>{{ product.name }}</td>
           <td>{{ product.quantity }}</td>
+          <td>
+            <button @click="increment(product)">+</button>
+            <button @click="decrement(product)">-</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -29,6 +33,16 @@
       return {
         products: productService.list(),
         searchTerm: ''
+      }
+    },
+
+    methods: {
+      increment(product) {
+        productService.increment(product)
+      },
+
+      decrement(product) {
+        productService.decrement(product)
       }
     },
 
