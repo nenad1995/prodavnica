@@ -25,13 +25,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(customer, index) in customers" :key="index">
+        <tr v-for="customer in customers" :key="customer.id">
           <td>{{ customer.fullName }}</td>
           <td>{{ customer.email }}</td>
           <td>
             <button @click="removeCustomer(customer)">
               Remove
             </button>
+            <router-link :to="{ name: 'latest-purchases', params: { id: customer.id }}">
+              Latest Purchases
+            </router-link>
           </td>
         </tr>
       </tbody>

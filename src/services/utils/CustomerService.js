@@ -3,7 +3,7 @@ const customers = [
     id: 1,
     fullName: 'Mario Speedwagon',
     email: 'example@example.com',
-    products: []
+    products: ['nesto']
   },
   {
     id: 2,
@@ -25,9 +25,15 @@ export default class CustomerService {
   list() {
     return customers;
   }
-  
+
+  find(id) {
+    return customers.find(customer => customer.id == id);
+  }
+
   add (customer) {
+    customer.id = nextId
     customers.push(customer)
+    nextId++
   }
 
   remove(customer) {
