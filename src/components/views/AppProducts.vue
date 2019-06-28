@@ -16,6 +16,9 @@
           <td>{{ product.name }}</td>
           <td>{{ product.quantity }}</td>
           <td>
+            <router-link :to="{ name: 'purchase-product', params: { id: product.id }}">
+              Purchase Product
+            </router-link>
             <button @click="increment(product)">+</button>
             <button @click="decrement(product)">-</button>
           </td>

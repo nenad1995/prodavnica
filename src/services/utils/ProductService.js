@@ -30,6 +30,11 @@ export default class ProductService {
   decrement(product) {
     product.quantity > 0 && product.quantity--
   }
+  
+  find (id) {
+    return products.find(product => product.id == id)
+  }
+  
 }
 
 export const productService = new ProductService()

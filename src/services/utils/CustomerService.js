@@ -39,6 +39,10 @@ export default class CustomerService {
   remove(customer) {
     customers.splice(customers.indexOf(customer), 1)
   }
+
+  addProductToCustomer(customer, product) {
+    customer.products.push(product)
+  }
 }
 
 export const customerService = new CustomerService();
